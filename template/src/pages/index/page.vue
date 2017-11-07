@@ -1,7 +1,7 @@
 <template>
     <main>
-        <h1>{{ data }}</h1>
-        <img src="@/assets/logo.png">
+        <h1></h1>
+        <img src="./../../assets/logo.png">
         <HelloWorld></HelloWorld>
     </main>
 </template>
@@ -9,8 +9,8 @@
 <script>
 import HelloWorld from '@/components/hello-world'
 export default {
-    path: '/dashboard',
-    name: 'dashboard',
+    path: '/',
+    name: 'index',
     data() {
         return {
             options: {
