@@ -7,6 +7,7 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
@@ -33,9 +34,13 @@ const webpackConfig = merge(baseWebpackConfig, {
       'process.env': env
     }),
     // UglifyJs do not support ES6+, you can also use babel-minify for better treeshaking: https://github.com/babel/minify
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        ie8: false,
+        ecma: 8,
+        compress: {
+          warnings: false
+        }
       },
       sourceMap: true,
       parallel: true
